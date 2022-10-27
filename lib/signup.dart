@@ -31,6 +31,9 @@ class _SignupState extends State<Signup> {
                     padding: const EdgeInsets.only(top: 100.0),
                     child: Image.asset("assets/logo2.png"),
                   ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Text(
                     "Sign Up",
                     style: TextStyle(
@@ -81,7 +84,7 @@ class _SignupState extends State<Signup> {
                         fontSize: 14, color: Color.fromARGB(1000, 0, 104, 119)),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
-                        Navigator.of(context).pop();
+                        Navigator.pushNamed(context, '/login');
                       }),
               ],
             ),

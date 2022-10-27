@@ -7,6 +7,7 @@ class Onboarding extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(1000, 235, 254, 252),
       body: SafeArea(
         child: OnboardContent(
           image: "assets/gambar1.png",
