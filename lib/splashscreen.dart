@@ -16,12 +16,12 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   startTimer() {
-    var duration = Duration(seconds: 5);
+    var duration = Duration(seconds: 3);
     return Timer(duration, route);
   }
 
   route() {
-    Navigator.of(context).pushReplacementNamed('/login');
+    Navigator.of(context).pushReplacementNamed('/onboarding');
   }
 
   @override

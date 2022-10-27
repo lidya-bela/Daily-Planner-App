@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -11,66 +12,83 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(1000, 235, 254, 252),
       body: content(),
     );
   }
 
   Widget content() {
-    return Column(
-      children: [
+    return SingleChildScrollView(
+      child: Column(children: [
         Container(
           height: 250,
           width: double.infinity,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              bottomRight: Radius.elliptical(80, 80),
-            ),
-          ),
           child: Padding(
-            padding: const EdgeInsets.only(top: 10.0),
+            padding: const EdgeInsets.only(top: 40.0),
             child: Image.asset("assets/logo2.png"),
           ),
         ),
         SizedBox(
-          height: 20,
+          height: 40,
         ),
-        inputStyle("Username", "Enter your username"),
+        inputStyle("Email"),
+        inputStyle("Password"),
         SizedBox(
-          height: 20,
-        ),
-        inputStyle("Password", "Enter your password"),
-        SizedBox(
-          height: 20,
+          height: 40,
         ),
         Container(
-          height: 40,
-          width: 100,
+          height: 44,
+          width: 260,
           decoration: BoxDecoration(
-            color: Colors.grey,
+            color: Color.fromARGB(1000, 0, 104, 119),
             borderRadius: BorderRadius.circular(20),
           ),
+          child: TextButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/homepage');
+            },
+            child: Text(
+              "Login",
+              style: TextStyle(fontSize: 18, color: Colors.white),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text: "Don't have an account? ",
+                style: TextStyle(fontSize: 14, color: Colors.black),
+              ),
+              TextSpan(
+                  text: "Sign Up",
+                  style: TextStyle(
+                      fontSize: 14, color: Color.fromARGB(1000, 0, 104, 119)),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      Navigator.of(context).pushNamed("/signup");
+                    }),
+            ],
+          ),
         )
-      ],
+      ]),
     );
   }
 }
 
-Widget inputStyle(String title, String hintText) {
+Widget inputStyle(String hintText) {
   return Padding(
-    padding: const EdgeInsets.fromLTRB(40, 5, 20, 10),
+    padding: const EdgeInsets.fromLTRB(30, 5, 50, 10),
     child: Row(
       children: [
-        Text(
-          "$title :",
-          style: TextStyle(fontSize: 20),
-        ),
-        SizedBox(width: 10),
         Expanded(
           child: Container(
             decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(5),
                 boxShadow: [
                   BoxShadow(
                       color: Colors.grey.withOpacity(0.5),
